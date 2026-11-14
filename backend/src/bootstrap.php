@@ -15,7 +15,7 @@ if (!is_array($config)
     || !isset($config['db']['username'], $config['db']['password'])
     || empty($config['app_origin'])
     || empty($config['app_key'])
-    || strlen((string)$config['app_key']) < 64
+    || !preg_match('/\\A[a-f0-9]{64,}\\z/i', (string)$config['app_key'])
 ) {
     http_response_code(503);
     header('Content-Type: application/json; charset=utf-8');
