@@ -7,7 +7,8 @@ AIVerse Wallet is being developed as a **non-custodial wallet**. The current `in
 - [x] Preserve the original prototype on `main`.
 - [x] Create an isolated development branch for the security foundation.
 - [x] Add a PHP authentication API foundation and MySQL schema.
-- [ ] Configure a real HTTPS PHP hosting environment and database.
+- [ ] Verify HTTPS, PHP Argon2id, PDO MySQL, and the private configuration path on `bestapplicationes.atwebpages.com`.
+- [ ] Configure the Biz.nf deployment and database (blocked until the HTTPS/security gate passes).
 - [ ] Connect the frontend to the authenticated API.
 - [ ] Add read-only blockchain data integrations.
 - [ ] Add wallet connection and client-side transaction signing.
