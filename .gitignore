@@ -1,0 +1,8 @@
+# Local backend secrets
+/backend/config.php
+
+# Environment and runtime artifacts
+.env
+.env.*
+*.log
+.DS_Store
