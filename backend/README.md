@@ -11,6 +11,12 @@ This directory contains the first backend milestone. It is deliberately limited 
 
 The code fails closed if Argon2id is unavailable. Do not silently replace it with a fast general-purpose hash.
 
+## Target host: Biz.nf
+
+The intended site origin is `https://bestapplicationes.atwebpages.com`. This is a configuration target, **not a confirmation that HTTPS or the required PHP extensions are active on that account**. Biz.nf's published hosting comparison currently lists shared SSL as unavailable on the Free plan; this API refuses plain HTTP and sets Secure session cookies. Do not deploy or enable account registration until the exact domain passes HTTPS checks and PHP confirms `pdo_mysql` plus Argon2id support. See the repository's `DEPLOYMENT-BIZNF.md` for the deployment gate and checks.
+
+The safest layout is to make `backend/public` the web document root so `backend/config.php` and `backend/src` are not web-accessible. If the host's File Manager does not allow changing the document root, stop before uploading secrets and arrange a private config location outside the web root; do not put database credentials in a public directory.
+
 ## Installation
 
 1. Create a MySQL database and a dedicated database user with only the permissions needed for this application.
