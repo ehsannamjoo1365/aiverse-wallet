@@ -13,7 +13,7 @@ return [
     ],
 
     // Exact origin of the frontend, with scheme and no trailing slash.
-    'app_origin' => 'https://wallet.example.com',
+    'app_origin' => 'https://bestapplicationes.atwebpages.com',
 
     // Generate with: php -r "echo bin2hex(random_bytes(32)), PHP_EOL;"
     // Use a unique random value per environment. Never reuse this example.
