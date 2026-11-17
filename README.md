@@ -4,7 +4,7 @@ AIVerse Wallet is being developed as a browser-based, non-custodial wallet proje
 
 > **Current status: UI prototype only. Not a real wallet.**
 >
-> The current `index.html` contains sample balances and demonstration controls. It does not generate or store private keys, manage seed phrases, sign transactions, connect to blockchain networks, or send/receive assets. Do not enter a seed phrase, private key, password, or real funds.
+> The current dashboard still contains sample balances and demonstration controls. The watch-only address book stores public addresses locally in the current browser, but does not validate address checksums or fetch on-chain balances. The app does not generate or store private keys, manage seed phrases, sign transactions, connect to blockchain networks, or send/receive assets. Do not enter a seed phrase, private key, password, or real funds.
 
 ## Project goals
 
@@ -17,7 +17,8 @@ AIVerse Wallet is being developed as a browser-based, non-custodial wallet proje
 
 ## Current repository
 
-- `index.html`: static interface prototype.
+- `index.html`: Persian-first static wallet dashboard.
+- `watch-only.js`: local watch-only public-address book for BTC, BCH, XRP, ADA, TRON, Ethereum, BNB Smart Chain, and Solana. It stores public addresses and labels in this browser's local storage only; it does not validate checksums or fetch balances.
 - `.github/workflows/pages.yml`: GitHub Pages deployment workflow.
 
 ## Publish with GitHub Pages
@@ -37,6 +38,7 @@ GitHub Pages is available for public repositories on GitHub Free. Publishing fro
 
 - Never commit `.env` files, API keys, access tokens, private keys, seed phrases, wallet backups, or real user data.
 - Treat all balances in the current prototype as fictional.
+- Watch-only entries are stored in browser local storage, are not encrypted by this app, and do not sync across devices. Do not use shared or public devices for private address books.
 - Do not connect real funds until key generation, entropy, backup/recovery, derivation paths, address validation, signing, fee calculation, network handling, and transaction broadcasting have been implemented and independently audited.
 - GitHub Pages is static hosting; it cannot safely host private server-side API credentials or a trusted signing backend.
 - Report security issues privately to the repository owner. Do not publish exploit details in a public issue.
