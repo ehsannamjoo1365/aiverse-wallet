@@ -1,0 +1,24 @@
+# Local environment and secrets
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+*.pfx
+
+# Wallet secrets and backups — never commit these
+*seed*
+*mnemonic*
+*keystore*
+*wallet-backup*
+*private-key*
+
+# Local development artifacts
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+node_modules/
+dist/
+build/
