@@ -4,7 +4,7 @@ AIVerse Wallet is being developed as a browser-based, non-custodial wallet proje
 
 > **Current status: UI prototype only. Not a real wallet.**
 >
-> The dashboard no longer displays fictional balances; it shows that blockchain connectivity is inactive. The watch-only address book stores public addresses locally in the current browser, but does not validate address checksums or fetch on-chain balances. The app does not generate or store private keys, manage seed phrases, sign transactions, connect to blockchain networks, or send/receive assets. Do not enter a seed phrase, private key, password, or real funds.
+> The dashboard no longer displays fictional balances; it shows that blockchain connectivity is inactive. The watch-only address book stores public addresses, labels, and optional tags/memos locally in the current browser. It performs basic format checks only; it does not verify checksums or fetch on-chain balances. The app does not generate or store private keys, manage seed phrases, sign transactions, connect to blockchain networks, or send/receive assets. Do not enter a seed phrase, private key, password, or real funds.
 
 ## Project goals
 
@@ -18,7 +18,9 @@ AIVerse Wallet is being developed as a browser-based, non-custodial wallet proje
 ## Current repository
 
 - `index.html`: Persian-first static wallet dashboard.
-- `watch-only.js`: local watch-only public-address book for BTC, BCH, XRP, ADA, TRON, Ethereum, BNB Smart Chain, and Solana. It stores public addresses and labels in this browser's local storage only; it does not validate checksums or fetch balances.
+- `watch-only.js`: local watch-only public-address book for BTC, BCH, XRP, ADA, TRON, Ethereum, BNB Smart Chain, and Solana. It stores public addresses, labels, and optional tags/memos in this browser's local storage only.
+- `address-validation.js`: basic network-specific address-format checks. These checks do not verify checksums, prove network ownership, or query a blockchain.
+- `scripts/test-address-validation.mjs`: automated format-validation tests.
 - `.github/workflows/pages.yml`: GitHub Pages deployment workflow.
 
 ## Publish with GitHub Pages
