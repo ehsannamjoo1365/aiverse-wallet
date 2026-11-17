@@ -25,6 +25,9 @@ jobs:
         run: |
           test -f index.html
           grep -qi '<html' index.html
+          test -f watch-only.js
+          grep -q 'watch-only.js' index.html
+          node --check watch-only.js
 
       - name: Configure GitHub Pages
         uses: actions/configure-pages@v5
