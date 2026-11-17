@@ -4,7 +4,7 @@ AIVerse Wallet is being developed as a browser-based, non-custodial wallet proje
 
 > **Current status: UI prototype only. Not a real wallet.**
 >
-> The current dashboard still contains sample balances and demonstration controls. The watch-only address book stores public addresses locally in the current browser, but does not validate address checksums or fetch on-chain balances. The app does not generate or store private keys, manage seed phrases, sign transactions, connect to blockchain networks, or send/receive assets. Do not enter a seed phrase, private key, password, or real funds.
+> The dashboard no longer displays fictional balances; it shows that blockchain connectivity is inactive. The watch-only address book stores public addresses locally in the current browser, but does not validate address checksums or fetch on-chain balances. The app does not generate or store private keys, manage seed phrases, sign transactions, connect to blockchain networks, or send/receive assets. Do not enter a seed phrase, private key, password, or real funds.
 
 ## Project goals
 
