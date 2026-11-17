@@ -16,4 +16,6 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Validate inline and local JavaScript
-        run: node scripts/check-inline-js.mjs
+        run: |
+          node scripts/check-inline-js.mjs
+          node --test scripts/test-address-validation.mjs
