@@ -81,12 +81,12 @@ footer{text-align:center;padding:30px;color:#8291a8}
 
  <section class="grid">
   <div class="card">
-   <div class="muted">مجموع دارایی آزمایشی</div>
-   <div class="balance">$12,450.00</div>
-   <span class="muted">اطلاعات نمایشی؛ متصل به بلاکچین نیست</span>
+   <div class="muted">وضعیت اتصال شبکه</div>
+   <div class="balance" style="font-size:22px">متصل نیست</div>
+   <span class="muted">هیچ موجودی زنده‌ای دریافت نمی‌شود؛ این نسخه فقط دفترچه آدرس عمومی است.</span>
    <div class="actions">
-    <button class="primary" onclick="alert('ارسال واقعی هنوز فعال نیست')">ارسال</button>
-    <button class="secondary" onclick="alert('دریافت واقعی هنوز فعال نیست')">دریافت</button>
+    <button class="secondary" disabled aria-disabled="true">ارسال غیرفعال</button>
+    <button class="secondary" disabled aria-disabled="true">دریافت غیرفعال</button>
    </div>
   </div>
 
@@ -98,23 +98,15 @@ footer{text-align:center;padding:30px;color:#8291a8}
  </section>
 
  <section class="card" style="margin-top:20px">
-  <h3>دارایی‌های دیجیتال</h3>
-  <div class="asset">
-   <span class="coin">₿ Bitcoin</span>
-   <span>0.125 BTC</span>
-  </div>
-  <div class="asset">
-   <span class="coin">Ξ Ethereum</span>
-   <span>1.50 ETH</span>
-  </div>
-  <div class="asset">
-   <span class="coin">XRP</span>
-   <span>850 XRP</span>
-  </div>
-  <div class="asset">
-   <span class="coin">ADA</span>
-   <span>1200 ADA</span>
-  </div>
+  <h3>شبکه‌های تحت پوشش دفترچه آدرس</h3>
+  <div class="asset"><span class="coin">Bitcoin · BTC</span><span class="muted">فقط آدرس عمومی</span></div>
+  <div class="asset"><span class="coin">Bitcoin Cash · BCH</span><span class="muted">فقط آدرس عمومی</span></div>
+  <div class="asset"><span class="coin">XRP Ledger</span><span class="muted">فقط آدرس عمومی</span></div>
+  <div class="asset"><span class="coin">Cardano · ADA</span><span class="muted">فقط آدرس عمومی</span></div>
+  <div class="asset"><span class="coin">TRON · TRC20</span><span class="muted">فقط آدرس عمومی</span></div>
+  <div class="asset"><span class="coin">Ethereum · ERC20</span><span class="muted">فقط آدرس عمومی</span></div>
+  <div class="asset"><span class="coin">BNB Smart Chain · BEP20</span><span class="muted">فقط آدرس عمومی</span></div>
+  <div class="asset"><span class="coin">Solana</span><span class="muted">فقط آدرس عمومی</span></div>
  </section>
 
  <div class="notice">
