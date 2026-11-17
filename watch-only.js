@@ -19,7 +19,9 @@
       return Array.isArray(value)
         ? value.filter((item) => item && typeof item.id === 'string' &&
             typeof item.network === 'string' && typeof item.address === 'string' &&
-            typeof item.label === 'string')
+            typeof item.label === 'string').map((item) => ({
+              ...item, memo: typeof item.memo === 'string' ? item.memo : ''
+            }))
         : [];
     } catch (_) {
       return [];
@@ -53,6 +55,7 @@
       .watch-form label{display:flex;flex-direction:column;gap:7px;color:#b9c7dc;font-size:13px}
       .watch-form input,.watch-form select{width:100%;min-width:0;padding:12px;border-radius:10px;border:1px solid #44536a;background:#101827;color:#fff;font:inherit}
       .watch-form .wide{grid-column:1/-1}
+      .watch-help{grid-column:1/-1;color:#9eacc2;font-size:12px;line-height:1.8}
       .watch-entry{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:14px 0;border-bottom:1px solid #334158}
       .watch-entry:last-child{border-bottom:0}
       .watch-address{direction:ltr;text-align:left;overflow-wrap:anywhere;color:#dce7f8;font-size:13px;margin-top:5px}
@@ -87,6 +90,14 @@
     labelInput.placeholder = 'مثلاً کیف پول شخصی';
     labelLabel.appendChild(labelInput);
 
+    const memoLabel = element('label', '', 'تگ / ممو (اختیاری)');
+    const memoInput = element('input');
+    memoInput.name = 'memo';
+    memoInput.maxLength = 80;
+    memoInput.autocomplete = 'off';
+    memoInput.placeholder = 'مثلاً Destination Tag در XRP';
+    memoLabel.appendChild(memoInput);
+
     const addressLabel = element('label', 'wide', 'آدرس عمومی');
     const addressInput = element('input');
     addressInput.name = 'address';
@@ -99,7 +110,8 @@
 
     const submit = element('button', 'primary wide', 'افزودن آدرس');
     submit.type = 'submit';
-    form.append(networkLabel, labelLabel, addressLabel, submit);
+    const help = element('p', 'watch-help', 'بررسی فقط شکل ظاهری آدرس را کنترل می‌کند؛ صحت checksum، تعلق آدرس به شبکه یا وجود آن روی بلاکچین تأیید نمی‌شود. تگ/ممو نیز صرفاً برای یادداشت محلی است و در این نسخه تراکنشی انجام نمی‌شود.');
+    form.append(networkLabel, labelLabel, addressLabel, memoLabel, submit, help);
     panel.appendChild(form);
 
     const status = element('p', 'watch-status');
@@ -126,6 +138,7 @@
         details.appendChild(element('strong', '', entry.label || networkName));
         details.appendChild(element('div', 'watch-muted', networkName));
         details.appendChild(element('div', 'watch-address', entry.address));
+        if (entry.memo) details.appendChild(element('div', 'watch-muted', 'تگ / ممو: ' + entry.memo));
 
         const actions = element('div', 'watch-actions');
         const copy = element('button', 'secondary', 'کپی آدرس');
@@ -163,6 +176,11 @@
         status.textContent = 'لطفاً آدرس عمومی را وارد کنید.';
         return;
       }
+      const validator = window.AIVerseAddressValidation;
+      if (!validator || !validator.isAddressFormatValid(networkSelect.value, address)) {
+        status.textContent = 'قالب آدرس با شبکه انتخاب‌شده سازگار نیست؛ شبکه و آدرس را بررسی کنید.';
+        return;
+      }
       if (entries.some((item) => item.network === networkSelect.value && item.address === address)) {
         status.textContent = 'این آدرس برای همین شبکه قبلاً ثبت شده است.';
         return;
@@ -172,6 +190,7 @@
         network: networkSelect.value,
         label: labelInput.value.trim(),
         address,
+        memo: memoInput.value.trim(),
       };
       const updated = [...entries, next];
       if (!saveEntries(updated)) {
@@ -181,6 +200,7 @@
       entries = updated;
       addressInput.value = '';
       labelInput.value = '';
+      memoInput.value = '';
       status.textContent = 'آدرس فقط‌خواندنی در همین مرورگر ذخیره شد.';
       render();
     });
