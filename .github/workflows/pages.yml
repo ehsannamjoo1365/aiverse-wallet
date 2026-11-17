@@ -26,7 +26,10 @@ jobs:
           test -f index.html
           grep -qi '<html' index.html
           test -f watch-only.js
+          test -f address-validation.js
           grep -q 'watch-only.js' index.html
+          grep -q 'address-validation.js' index.html
+          node --check address-validation.js
           node --check watch-only.js
 
       - name: Configure GitHub Pages
